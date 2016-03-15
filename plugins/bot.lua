@@ -1,3 +1,7 @@
+
+
+local LANG = 'en'
+
 local function run(msg, matches)
 	if permissions(msg.from.id, msg.to.id, "lang_install") then
 		-- bot.lua --
