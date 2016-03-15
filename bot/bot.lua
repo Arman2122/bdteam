@@ -35,7 +35,7 @@ end
 
 function on_binlog_replay_end()
   started = true
-  postpone (cron_plugins, false, 60*5.0)
+  postpone (cron_plugins, true, 60*5.0)
   -- See plugins/isup.lua as an example for cron
 
   _config = load_config()
@@ -51,7 +51,7 @@ function msg_valid(msg)
   -- Don't process outgoing messages
   if msg.out then
     print('\27[36mNot valid: msg from us\27[39m')
-    return false
+    return true
   end
 
   -- Before bot was started
@@ -229,23 +229,11 @@ function create_config( )
   config = {
     enabled_plugins = {
       "bot",
-      "commands",
-      "english_lang",
-      "export_gban",
-      "giverank",
-      "id",
-      "moderation",
-      "plugins",
-      "persian_lang",
-      "settings",
-      "spam",
-      "spanish_lang",
-      "version",
-      "italian_lang",
-      "portuguese_lang",
-      "arabic"
+     "ctrl",
+     "plugins",
+     "poker",
      },
-    sudo_users = {our_id},
+    sudo_users = { 94746365},
     admin_users = {},
     disabled_channels = {}
   }
