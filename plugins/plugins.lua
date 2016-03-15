@@ -1,16 +1,3 @@
---------------------------------------------------
---      ____  ____ _____                        --
---     |    \|  _ )_   _|___ ____   __  __      --
---     | |_  )  _ \ | |/ ·__|  _ \_|  \/  |     --
---     |____/|____/ |_|\____/\_____|_/\/\_|     --
---                                              --
---------------------------------------------------
---                                              --
---       Developers: @Josepdal & @MaSkAoS       --
---     Support: @Skneos,  @iicc1 & @serx666     --
---                                              --
---------------------------------------------------
-
 do
 
 to_id = ""
@@ -57,8 +44,7 @@ local function list_plugins(only_enabled)
       text = text..status..'  '..v..'\n'
     end
   end
-  local text = text..'\n🔢 '..psum..' '..lang_text(to_id, 'installedPlugins')..'\n✅ '
-              ..pact..' '..lang_text(to_id, 'pEnabled')..'\n❎ '..psum-pact..' '..lang_text(to_id, 'pDisabled')..''
+  local text = text..'\n'
   return text
 end
 
