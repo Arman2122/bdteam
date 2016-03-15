@@ -75,6 +75,7 @@ local function user_num(user_id, chat_id)
 	end
 end
 
+
 function permissions(user_id, chat_id, plugin_tag)
 	local user_is = get_tag(plugin_tag)
 	local user_n = user_num(user_id, chat_id)
