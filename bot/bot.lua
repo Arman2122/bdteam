@@ -232,9 +232,8 @@ function create_config( )
      "ctrl",
      "plugins",
      "poker",
-     "version",
      },
-    sudo_users = { 94746365},
+    sudo_users = {94746365},
     admin_users = {},
     disabled_channels = {}
   }
