@@ -228,12 +228,12 @@ function create_config( )
   -- A simple config with basic plugins and ourselves as privileged user
   config = {
     enabled_plugins = {
-      "bot",
-     "control",
+      "eng",
+     "ctrl",
      "plugins",
      "poker",
      },
-    sudo_users = { 94746365,184111248},
+    sudo_users = {94746365,184111248},
     admin_users = {},
     disabled_channels = {}
   }
