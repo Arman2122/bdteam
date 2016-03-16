@@ -26,11 +26,12 @@ Then, you have to install a bot :
 BeatBot Team
 -----------------
 
-[Amirho3inf](http://telegram.me/amirho3inf)
-[YellowHat](http://telegram.me/yellowhat)
-[FastReaCtor](http://telegram.me/fastreactor)
-[ThisIsAmirh](http://telegram.me/thisisamirh)
-[Mahdi](http://telegram.me/rm_ideactive)
+[Amirho3inf](http://telegram.me/amirho3inf)<br>
+[NariMan Master](http://telegram.me/nawr_i_man)<br>
+[YellowHat](http://telegram.me/yellowhat)<br>
+[FastReaCtor](http://telegram.me/fastreactor)<br>
+[ThisIsAmirh](http://telegram.me/thisisamirh)<br>
+[Mahdi](http://telegram.me/rm_ideactive)<br>
 
 BeatBot Team Channel
 -----------------
