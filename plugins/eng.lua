@@ -1,4 +1,5 @@
 
+
 local LANG = 'en'
 
 local function run(msg, matches)
@@ -14,11 +15,6 @@ local function run(msg, matches)
 		-- Plugins --
 		-------------
 
-		-- global plugins --
-		set_text(LANG, 'require_sudo', 'This plugin requires sudo privileges.')
-		set_text(LANG, 'require_admin', 'This plugin requires admin privileges or higher.')
-		set_text(LANG, 'require_mod', 'This plugin requires mod privileges or higher.')
-
 		-- Spam.lua --
 		set_text(LANG, 'reportUser', 'USER')
 		set_text(LANG, 'reportReason', 'Report reason')
@@ -31,8 +27,8 @@ local function run(msg, matches)
 		set_text(LANG, 'notAllowedSpamL', 'Spam is not allowed in this supergroup.')
 
 		-- bot.lua --
-		set_text(LANG, 'botOn', 'bot was on :)')
-		set_text(LANG, 'botOff', 'bot was off ;-/')
+		set_text(LANG, 'botOn', 'bot is on :)')
+		set_text(LANG, 'botOff', 'bot is off ;-/')
 
 		-- settings.lua --
 		set_text(LANG, 'user', 'User')
