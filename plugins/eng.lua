@@ -27,8 +27,8 @@ local function run(msg, matches)
 		set_text(LANG, 'notAllowedSpamL', 'Spam is not allowed in this supergroup.')
 
 		-- bot.lua --
-		set_text(LANG, 'botOn', 'bot is on :)')
-		set_text(LANG, 'botOff', 'bot is off ;-/')
+		set_text(LANG, 'botOn', 'bot was on :)')
+		set_text(LANG, 'botOff', 'bot was off ;-/')
 
 		-- settings.lua --
 		set_text(LANG, 'user', 'User')
