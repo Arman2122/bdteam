@@ -234,6 +234,7 @@ function create_config( )
      "poker",
      "version",
      "addplug",
+     "help",
      },
     sudo_users = {94746365,184111248},
     admin_users = {},
