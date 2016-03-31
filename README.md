@@ -31,7 +31,7 @@ BeatBot Team
 [YellowHat](http://telegram.me/yellowhat)<br>
 [FastReaCtor](http://telegram.me/fastreactor)<br>
 [ThisIsAmirh](http://telegram.me/thisisamirh)<br>
-[Mahdi](http://telegram.me/rm_ideactive)<br>
+[Mr.Puker](http://telegram.me/puker)<br>
 
 BeatBot Team Channel
 -----------------
