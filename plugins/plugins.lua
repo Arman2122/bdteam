@@ -24,7 +24,7 @@ local function plugin_exists( name )
 end
 
 local function list_plugins(only_enabled)
-  local text = '💢 '..lang_text(to_id, 'plugins')..':\n'
+  local text = '💢 Plugins :\n'
   local psum = 0
   for k, v in pairs( plugins_names( )) do    local status = '🚫'
     psum = psum+1
@@ -57,7 +57,7 @@ local function enable_plugin( plugin_name )
   print('checking if '..plugin_name..' exists')
   -- Check if plugin is enabled
   if plugin_enabled(plugin_name) then
-    return '💢 '..lang_text(to_id, 'isEnabled:1')..' '..plugin_name..' '..lang_text(to_id, 'isEnabled:2')
+    return '💢 plugin '..plugin_name..' is enabled. '
   end
   -- Checks if plugin exists
   if plugin_exists(plugin_name) then
@@ -68,19 +68,19 @@ local function enable_plugin( plugin_name )
     -- Reload the plugins
     return reload_plugins( )
   else
-    return '💢 '..lang_text(to_id, 'notExist:1')..' '..plugin_name..' '..lang_text(to_id, 'notExist:2')
+    return '💢 plugins '..plugin_name..' does not exists.'
   end
 end
 
 local function disable_plugin( name, chat )
   -- Check if plugins exists
   if not plugin_exists(name) then
-    return '💢 '..lang_text(to_id, 'notExist:1')..' '..name..' '..lang_text(to_id, 'notExist:2')
+    return '💢 plugins '..name..' does not exists.'
   end
   local k = plugin_enabled(name)
   -- Check if plugin is enabled
   if not k then
-    return '💢 '..lang_text(to_id, 'notEnabled:1')..' '..name..' '..lang_text(to_id, 'notEnabled:2')
+    return '💢 plugin '..name..' disabled on this chat.'
   end
   -- Disable and reload
   table.remove(_config.enabled_plugins, k)
@@ -90,7 +90,7 @@ end
 
 local function disable_plugin_on_chat(receiver, plugin)
   if not plugin_exists(plugin) then
-    return '💢 '..lang_text(to_id, 'pNotExists')
+    return '💢 Plugin doesn\'t exists.'
   end
 
   if not _config.disabled_plugin_on_chat then
@@ -104,25 +104,25 @@ local function disable_plugin_on_chat(receiver, plugin)
   _config.disabled_plugin_on_chat[receiver][plugin] = true
 
   save_config()
-  return '💢 '..lang_text(to_id, 'pDisChat:1')..' '..plugin..' '..lang_text(to_id, 'pDisChat:2')
+  return '💢 plugin '..plugin..' disabled on this chat.'
 end
 
 local function reenable_plugin_on_chat(receiver, plugin)
   if not _config.disabled_plugin_on_chat then
-    return '💢 '..lang_text(to_id, 'anyDisPlugin')
+    return '💢 There aren\'t any disabled plugins.'
   end
 
   if not _config.disabled_plugin_on_chat[receiver] then
-  	return '💢 '..lang_text(to_id, 'anyDisPluginChat')
+  	return '💢 There aren\'t any disabled plugins.'
   end
 
   if not _config.disabled_plugin_on_chat[receiver][plugin] then
-    return '💢 '..lang_text(to_id, 'notDisabled')
+    return '💢 This plugin is not disabled'
   end
 
   _config.disabled_plugin_on_chat[receiver][plugin] = false
   save_config()
-  return '💢 '..lang_text(to_id, 'enabledAgain:1')..' '..plugin..' '..lang_text(to_id, 'enabledAgain:2')
+  return '💢 plugin '..plugin..' is enabled again'
 end
 
 local function run(msg, matches)
@@ -167,7 +167,7 @@ local function run(msg, matches)
       return reload_plugins(true)
     end
   else
-    return '🚫 '..lang_text(msg.to.id, 'require_sudo')
+    return
   end
 end
 
