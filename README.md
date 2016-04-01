@@ -1,4 +1,4 @@
-Self-Bot
+Self-Bot V2
 ============
 
 A Telegram Bot based on [DBTeam bot](https://github.com/Josepdal/DBTeam).
@@ -17,10 +17,6 @@ git clone https://github.com/BeatBotTeam/Self-Bot.git
 cd Self-Bot
 ./launch.sh install
 ./launch.sh # Will ask you for a phone number & confirmation code.
-```
-Then, you have to install a bot :
-```
-#bot install
 ```
 
 BeatBot Team
