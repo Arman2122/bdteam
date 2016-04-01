@@ -3,12 +3,6 @@ do
 function run(msg, matches)
   local help = [[Self-Bot Commands
 
-●#bot install
-نصب ربات پس از هر ریست (زبان)
-
-●#bot reload
-آپدیت زبان پس از اعمال تغیرات
-
 ●#bot on
 فعال کردن بوت در یک گروه خواص
 
