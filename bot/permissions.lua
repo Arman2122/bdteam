@@ -1,61 +1,18 @@
 local sudos = {
-    "plugins",
-    "rank_admin",
+	"plugins",
     "bot",
-    "lang_install",
-    "set_lang",
     "tosupergroup",
- 	"gban_installer"
-  }
- local admins = {
- 	"rank_mod",
- 	"gban",
- 	"ungban",
- 	"setrules",
  	"setphoto",
- 	"creategroup",
  	"setname",
- 	"addbots",
- 	"setlink",
- 	"rank_guest",
  	"description",
- 	"export_gban"
-}
-local mods = {
-	"whois",
 	"kick",
-	"add",
-	"ban",
-	"unban",
-	"lockmember",
-	"mute",
-	"unmute",
-	"admins",
- 	"members",
- 	"mods",
-	"flood",
-	"commands",
-	"lang",
 	"settings",
-	"mod_commands",
-	"no_flood_ban",
-	"muteall",
-	"rules",
-	"pre_process"
+	"pre_process",
+	"add",
+	"contact"
 }
-
 local function get_tag(plugin_tag)
 	for v,tag in pairs(sudos) do
-	    if tag == plugin_tag then
-	       	return 3
-	    end
-  	end
-  	for v,tag in pairs(admins) do
-	    if tag == plugin_tag then
-	       	return 2
-	    end
-  	end
-  	for v,tag in pairs(mods) do
 	    if tag == plugin_tag then
 	       	return 1
 	    end
@@ -65,10 +22,6 @@ end
 
 local function user_num(user_id, chat_id)
 	if new_is_sudo(user_id) then
-		return 3
-	elseif is_admin(user_id) then
-		return 2
-	elseif is_mod(chat_id, user_id) then
 		return 1
 	else
 		return 0
