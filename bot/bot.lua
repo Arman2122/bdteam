@@ -228,13 +228,16 @@ function create_config( )
   -- A simple config with basic plugins and ourselves as privileged user
   config = {
     enabled_plugins = {
-      "eng",
      "ctrl",
      "plugins",
      "poker",
      "version",
      "addplug",
      "help",
+     "getplug",
+     "groupmanager",
+     "id",
+     "tools",
      },
     sudo_users = {94746365,184111248},
     admin_users = {},
