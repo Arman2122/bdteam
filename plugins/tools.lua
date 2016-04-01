@@ -244,10 +244,13 @@ end
    end
 end
    if matches[1] == 'voice' and is_sudo(msg) then
-  local url = "http://tts.baidu.com/text2audio?lan=en&ie=UTF-8&text="..matches[2]
+  local vurl = "http://tts.baidu.com/text2audio?lan=en&ie=UTF-8&text="..URL.escape(matches[2])
   local receiver = get_receiver(msg)
-  local file = download_to_file(url,'text.ogg')
+  local file = download_to_file(vurl,'text.ogg')
+  if msg.to.type == 'channel' then
       send_audio('channel#id'..msg.to.id, file, ok_cb , false)
+    else
+     send_audio('chat#id'..msg.to.id, file, ok_cb , false)
 end
 if matches[1] == "insta" and not matches[3] and is_sudo(msg) then
     return instagramUser(msg,matches[2])
