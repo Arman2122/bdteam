@@ -57,7 +57,7 @@ function run(msg, matches)
 ●#webshot (http://google.com)
 دریافت اسکرین شات از سایت گوگل
 
-●#voice (tect)
+●#voice (text)
 تبدیل (text) به صدا
 
 ●#insta (insta id)
