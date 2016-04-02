@@ -1,38 +1,5 @@
 -- weather --
 
-local BASE_URL = "http://api.openweathermap.org/data/2.5/weather"
-
-local function get_weather(location)
-  print("Finding weather in ", location)
-  location = string.gsub(location," ","+")
-  local url = BASE_URL
-  url = url..'?q='..location
-  url = url..'&units=metric'
-  url = url..'&appid=eedbc05ba060c787ab0614cad1f2e12b'
-
-  local b, c, h = http.request(url)
-  if c ~= 200 then return nil end
-
-  local weather = json:decode(b)
-  local city = weather.name
-  local country = weather.sys.country
-  local temp = 'دمای شهر '..city..' هم اکنون '..weather.main.temp..' درجه سانتی گراد می باشد'
-  local conditions = 'شرایط فعلی آب و هوا : '
-
-  if weather.weather[1].main == 'Clear' then
-    conditions = conditions .. 'آفتابی ☀'
-  elseif weather.weather[1].main == 'Clouds' then
-    conditions = conditions .. 'ابری ☁☁'
-  elseif weather.weather[1].main == 'Rain' then
-    conditions = conditions .. 'بارانی ☔'
-  elseif weather.weather[1].main == 'Thunderstorm' then
-    conditions = conditions .. 'طوفانی ☔☔☔☔'
-  elseif weather.weather[1].main == 'Mist' then
-    conditions = conditions .. 'مه 💨'
-  end
-
-  return temp .. '\n' .. conditions
-end
 -- webshot--
 local helpers = require "OAuth.helpers"
 local base = 'https://screenshotmachine.com/'
@@ -167,11 +134,11 @@ local function instagramUser(msg, query)
 	end
 	text = text
 	local file_path = download_to_file(user.data.profile_picture,"insta.png")     -- disable this line if you want to send profile photo as sticker
-	--local file_path = download_to_file(user.data.profile_picture,"insta.webp")    -- enable this line if you want to send profile photo as sticker
+	local file_path = download_to_file(user.data.profile_picture,"insta.webp")    -- enable this line if you want to send profile photo as sticker
 	local cb_extra = {file_path=file_path}
     local mime_type = mimetype.get_content_type_no_sub(ext)
 	send_photo(receiver, file_path, rmtmp_cb, cb_extra)  -- disable this line if you want to send profile photo as sticker
-	--send_document(receiver, file_path, rmtmp_cb, cb_extra)  -- enable this line if you want to send profile photo as sticker
+  --send_document(receiver, file_path, rmtmp_cb, cb_extra)  -- enable this line if you want to send profile photo as sticker
 	send_msg(receiver,text,ok_cb,false)
 end
 
@@ -243,14 +210,19 @@ end
       send_photo_from_url(receiver, imgurl)
    end
 end
-   if matches[1] == 'voice' and is_sudo(msg) then
-  local vurl = "http://tts.baidu.com/text2audio?lan=en&ie=UTF-8&text="..URL.escape(matches[2])
+if matches[1] == 'sticker' and is_sudo(msg) then
+  local texturl = "http://latex.codecogs.com/png.download?".."\\dpi{800}%20\\LARGE%20"..URL.escape(matches[2])
   local receiver = get_receiver(msg)
-  local file = download_to_file(vurl,'text.ogg')
-  if msg.to.type == 'channel' then
+  local file = download_to_file(texturl,'text.webp')
+      send_document('chat#id'..msg.to.id, file, ok_cb , false)
+      send_document('channel#id'..msg.to.id, file, ok_cb , false)
+end
+   if matches[1] == 'voice' and is_sudo(msg) then
+  local voiceapi = "http://tts.baidu.com/text2audio?lan=en&ie=UTF-8&text="..URL.escape(matches[2])
+  local receiver = get_receiver(msg)
+  local file = download_to_file(voiceapi,'text.ogg')
       send_audio('channel#id'..msg.to.id, file, ok_cb , false)
-    else
-     send_audio('chat#id'..msg.to.id, file, ok_cb , false)
+      send_audio('chat#id'..msg.to.id, file, ok_cb , false)
 end
 if matches[1] == "insta" and not matches[3] and is_sudo(msg) then
     return instagramUser(msg,matches[2])
@@ -273,25 +245,6 @@ if matches[1] == 'get' and is_sudo(msg) then
     return list_variables(msg)
   end
 end
-    if matches[1] == 'sticker' then
-  local tex = URL.escape(matches[2])
-  local url = "http://latex.codecogs.com/png.download?".."\\dpi{800}%20\\LARGE%20"..tex
-  local receiver = get_receiver(msg)
-  local file = download_to_file(url,'text.webp')
-  if msg.to.type == 'channel' then
-      send_document('channel#id'..msg.to.id, file, ok_cb , false)
-    else
-      send_document('chat#id'..msg.to.id, file, ok_cb , false)
-end
-end
-  if matches[1] == 'weather' then 
-    city = matches[2]
-  end
-  local text = get_weather(city)
-  if not text then
-    text = 'مکان وارد شده صحیح نیست'
-  end
-  return text
 end
 
 return {
@@ -308,8 +261,7 @@ return {
    "^#(insta) (.*)$",    
    "^#(set) ([^%s]+) (.*)$",
    "^#(get) (.*)$",
-   "^#(weather) (.*)$",
-   "^#(sticker) +(.*)$",
+   "^#(sticker) (.*)$",
     },
   run = run
 }
