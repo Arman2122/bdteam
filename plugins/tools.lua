@@ -1,5 +1,3 @@
--- weather --
-
 -- webshot--
 local helpers = require "OAuth.helpers"
 local base = 'https://screenshotmachine.com/'
