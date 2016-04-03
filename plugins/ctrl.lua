@@ -89,9 +89,9 @@ end
 
 return {
 	patterns = {
-		"^#bot? (on)",
-		"^#bot? (off)",
-	    "^#bot? (up)"
+		"^#bot? (on)$",
+		"^#bot? (off)$",
+	    "^#bot? (up)$"و
 	    },
 	run = run,
 	pre_process = pre_process
