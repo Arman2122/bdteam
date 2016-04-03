@@ -1,3 +1,9 @@
+function run_bash(command)
+    local cmd = io.popen(command)
+    local result = cmd:read('*all')
+    cmd:close()
+    return result
+end
 local function is_channel_disabled( receiver )
 	if not _config.disabled_channels then
 		return false
@@ -67,12 +73,26 @@ local function run(msg, matches)
 	else
 		return 
 	end
+	    if matches[1] == 'up' then
+  if not is_sudo(msg) then
+    return nil
+  end
+  local receiver = get_receiver(msg)
+ if string.match then
+     local command = 'git pull'
+   text = run_bash(command)
+   local text = text..'Updates were applied GitHub\n@BeatBot_Team'
+    return text
+  end
+end
 end
 
 return {
 	patterns = {
 		"^#bot? (on)",
-		"^#bot? (off)" }, 
+		"^#bot? (off)",
+	    "^#bot? (up)"
+	    },
 	run = run,
 	pre_process = pre_process
 }
