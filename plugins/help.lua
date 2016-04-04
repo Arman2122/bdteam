@@ -51,6 +51,9 @@ function run(msg, matches)
 ●#id @username (by reply)
 دریافت آیدی عددی فردی با آیدی @username (حتی با ریپلای)
 
+●#gid
+دریافت آیدی گروه
+
 ●#google (text)
 جستجو (text) در گوگل
 
