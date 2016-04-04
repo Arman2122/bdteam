@@ -33,15 +33,16 @@ install_luarocks() {
 }
 
 install_rocks() {
-  ./.luarocks/bin/luarocks install luasocket
+  ./.luarocks/bin/luarocks install luasec
   RET=$?; if [ $RET -ne 0 ];
     then echo "Error. Exiting."; exit $RET;
   fi
 
-  ./.luarocks/bin/luarocks install oauth
+  ./.luarocks/bin/luarocks install lbase64 20120807-3
   RET=$?; if [ $RET -ne 0 ];
     then echo "Error. Exiting."; exit $RET;
   fi
+
 
   ./.luarocks/bin/luarocks install redis-lua
   RET=$?; if [ $RET -ne 0 ];
@@ -111,6 +112,16 @@ else
     exit 1
   fi
   
+  #Adding some color. By @iicc1 :D
+echo -e "\033[38;5;208m"
+echo -e  ____             _   ____        _  _____                    "
+echo -e | __ )  ___  __ _| |_| __ )  ___ | ||_   _|__  __ _ _ __ ___  "
+echo -e |  _ \ / _ \/ _` | __|  _ \ / _ \| __|| |/ _ \/ _` | '_ ` _ \ "
+echo -e | |_) |  __/ (_| | |_| |_) | (_) | |_ | |  __/ (_| | | | | | |"
+echo -e |____/ \___|\__,_|\__|____/ \___/ \__||_|\___|\__,_|_| |_| |_|"
+echo -e "                                              \033[0;00m"
+echo -e "\e[36m"
+
 
   ./tg/bin/telegram-cli -k ./tg/tg-server.pub -s ./bot/bot.lua -l 1 -E $@
 fi
