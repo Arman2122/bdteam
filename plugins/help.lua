@@ -21,6 +21,12 @@ function run(msg, matches)
 ●#plugins reload
 آپدیت کردن لیست پلاگین ها
 
+●#plugins disable (name) gp
+غیر فعال کردن پلاگین (name) در گروه مورد نظر
+
+●#plugins disable (name) gp
+فعال کردن پلاگین (name) در گروه مورد نظر
+
 ●#addplug (text) (name)
 اضافه کردن پلاگینی به محتوای (text)و نام (name) به لیست پلاگین 
 
