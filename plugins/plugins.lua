@@ -80,7 +80,7 @@ local function disable_plugin( name, chat )
   local k = plugin_enabled(name)
   -- Check if plugin is enabled
   if not k then
-    return '💢 plugin '..name..' disabled on this chat.'
+    return '💢 plugin '..name..' disabled on this gp.'
   end
   -- Disable and reload
   table.remove(_config.enabled_plugins, k)
@@ -104,7 +104,7 @@ local function disable_plugin_on_chat(receiver, plugin)
   _config.disabled_plugin_on_chat[receiver][plugin] = true
 
   save_config()
-  return '💢 plugin '..plugin..' disabled on this chat.'
+  return '💢 plugin '..plugin..' disabled on this gp.'
 end
 
 local function reenable_plugin_on_chat(receiver, plugin)
@@ -134,10 +134,10 @@ local function run(msg, matches)
     end
 
     -- Re-enable a plugin for this chat
-    if matches[1] == 'enable' and matches[3] == 'chat' then
+    if matches[1] == 'enable' and matches[3] == 'gp' then
       local receiver = get_receiver(msg)
       local plugin = matches[2]
-      print("enable "..plugin..' on this chat')
+      print("enable "..plugin..' on this gp')
       return reenable_plugin_on_chat(receiver, plugin)
     end
 
@@ -149,10 +149,10 @@ local function run(msg, matches)
     end
 
     -- Disable a plugin on a chat
-    if matches[1] == 'disable' and matches[3] == 'chat' then
+    if matches[1] == 'disable' and matches[3] == 'gp' then
       local plugin = matches[2]
       local receiver = get_receiver(msg)
-      print("disable "..plugin..' on this chat')
+      print("disable "..plugin..' on this gp')
       return disable_plugin_on_chat(receiver, plugin)
     end
 
@@ -176,8 +176,8 @@ return {
     "^#plugins$",
     "^#plugins? (enable) ([%w_%.%-]+)$",
     "^#plugins? (disable) ([%w_%.%-]+)$",
-    "^#plugins? (enable) ([%w_%.%-]+) (chat)",
-    "^#plugins? (disable) ([%w_%.%-]+) (chat)",
+    "^#plugins? (enable) ([%w_%.%-]+) (gp)",
+    "^#plugins? (disable) ([%w_%.%-]+) (gp)",
     "^#plugins? (reload)$" },
   run = run
 }
