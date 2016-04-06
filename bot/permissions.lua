@@ -9,7 +9,9 @@ local sudos = {
 	"settings",
 	"pre_process",
 	"add",
-	"contact"
+	"contact",
+	"newlink",
+	"link",
 }
 local function get_tag(plugin_tag)
 	for v,tag in pairs(sudos) do
