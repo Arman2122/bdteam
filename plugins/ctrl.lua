@@ -1,3 +1,7 @@
+local function reload_plugins( )
+	plugins = {}
+  return load_plugins()
+end
 function run_bash(command)
     local cmd = io.popen(command)
     local result = cmd:read('*all')
@@ -85,13 +89,20 @@ local function run(msg, matches)
     return text
   end
 end
+	if matches[1] == 'rl' and is_sudo(msg) then
+		receiver = get_receiver(msg)
+		reload_plugins(true)
+		post_msg(receiver, "Reloaded!", ok_cb, false)
+		return "All plugins reloaded!"
+	end
 end
 
 return {
 	patterns = {
-		"^#bot? (on)$",
-		"^#bot? (off)$",
+	    "^#bot? (on)$",
+            "^#bot? (off)$",
 	    "^#bot? (up)$",
+	    "^#bot (rl)$",
 	    },
 	run = run,
 	pre_process = pre_process
