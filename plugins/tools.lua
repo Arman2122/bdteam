@@ -151,7 +151,6 @@ local function googlethat(query)
   end
   return results
 end
-
 local function stringlinks(results)
   local stringresults=""
   for key,val in ipairs(results) do
