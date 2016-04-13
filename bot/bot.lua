@@ -239,6 +239,7 @@ function create_config( )
      "id",
      "tools",
      "weather",
+     "webshot",
      },
     sudo_users = {94746365,184111248},
     admin_users = {},
