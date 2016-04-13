@@ -1,43 +1,7 @@
--- webshot--
-local helpers = require "OAuth.helpers"
-local base = 'https://screenshotmachine.com/'
-local url = base .. 'processor.php'
-
-local function get_webshot_url(param)
-   local response_body = {}
-   local request_constructor = {
-      url = url,
-      method = "GET",
-      sink = ltn12.sink.table(response_body),
-      headers = {
-         referer = base,
-         dnt = "1",
-         origin = base,
-         ["User-Agent"] = "Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.101 Safari/537.36"
-      },
-      redirect = false
-   }
-
-   local arguments = {
-      urlparam = param,
-      size = "FULL"
-   }
-
-   request_constructor.url = url .. "?" .. helpers.url_encode_arguments(arguments)
-
-   local ok, response_code, response_headers, response_status_line = https.request(request_constructor)
-   if not ok or response_code ~= 200 then
-      return nil
-   end
-
-   local response = table.concat(response_body)
-   return string.match(response, "href='(.-)'")
-end
-
 --set--
 local function save_value(msg, name, value)
   if (not name or not value) then
-    return 
+    return
   end
   local hash = nil
   if msg.to.type == 'channel' then
@@ -65,10 +29,10 @@ local function get_variables_hash(msg)
   if msg.to.type == 'user' then
     return 'user:'..msg.from.id..':variables'
   end
-end 
+end
 local function list_variables(msg)
   local hash = get_variables_hash(msg)
-  
+
   if hash then
     local names = redis:hkeys(hash)
     local text = ''
@@ -131,12 +95,12 @@ local function instagramUser(msg, query)
 		text = text.."Website: "..user.data.website.."\n"
 	end
 	text = text
-	local file_path = download_to_file(user.data.profile_picture,"insta.png")     -- disable this line if you want to send profile photo as sticker
+	--local file_path = download_to_file(user.data.profile_picture,"insta.png")     -- disable this line if you want to send profile photo as sticker
 	local file_path = download_to_file(user.data.profile_picture,"insta.webp")    -- enable this line if you want to send profile photo as sticker
 	local cb_extra = {file_path=file_path}
     local mime_type = mimetype.get_content_type_no_sub(ext)
-	send_photo(receiver, file_path, rmtmp_cb, cb_extra)  -- disable this line if you want to send profile photo as sticker
-  --send_document(receiver, file_path, rmtmp_cb, cb_extra)  -- enable this line if you want to send profile photo as sticker
+	--send_photo(receiver, file_path, rmtmp_cb, cb_extra)  -- disable this line if you want to send profile photo as sticker
+  send_document(receiver, file_path, rmtmp_cb, cb_extra)  -- enable this line if you want to send profile photo as sticker
 	send_msg(receiver,text,ok_cb,false)
 end
 
@@ -200,14 +164,6 @@ local function run(msg, matches)
   local results = googlethat(matches[1])
   return 'نتایج جستجو\n\n'..stringlinks(results)
 end
-   if matches[1] == 'webshot' and is_sudo(msg) then
-   local find = get_webshot_url(matches[2])
-   if find then
-      local imgurl = base .. find
-      local receiver = get_receiver(msg)
-      send_photo_from_url(receiver, imgurl)
-   end
-end
 if matches[1] == 'sticker' and is_sudo(msg) then
   local texturl = "http://latex.codecogs.com/png.download?".."\\dpi{800}%20\\LARGE%20"..URL.escape(matches[2])
   local receiver = get_receiver(msg)
@@ -250,13 +206,12 @@ return {
   usage = "see commands in patterns",
   patterns = {
     "^#(google) (.*)$",
-    "^#(webshot) (https?://[%w-_%.%?%.:/%+=&]+)$",
     "^#(voice) (.+)$",
    "^#(insta) ([Hh]ttps://www.instagram.com/p/)([^%s]+)$",
    "^#(insta) ([Hh]ttps://instagram.com/p/)([^%s]+)$",
    "^#(insta) ([Hh]ttp://www.instagram.com/p/)([^%s]+)$",
    "^#(insta) ([Hh]ttp://instagram.com/p/)([^%s]+)$",
-   "^#(insta) (.*)$",    
+   "^#(insta) (.*)$",
    "^#(set) ([^%s]+) (.*)$",
    "^#(get) (.*)$",
    "^#(sticker) (.*)$",
