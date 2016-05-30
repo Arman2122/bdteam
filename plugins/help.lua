@@ -89,17 +89,19 @@ function run(msg, matches)
 
 .......................................
 📡
-- @BeatBot_Team
+- @i_love_poker
+Arman developer
 .......................................]]
     if matches[1] == 'help' and is_sudo(msg) then
       send_large_msg("user#id"..msg.from.id, help)      
-   return '💥 Help was sent in your pv '
+   return '💥 Help was sent in your pv @i_love_poker'
     end
 end 
 
 return {
   patterns = {
-    "^#(help)$"
+    "^/#(help)$",
+    "^/#(helpme)$"
   },
   run = run
 }
