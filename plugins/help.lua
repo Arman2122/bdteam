@@ -1,7 +1,7 @@
 do
     
 function run(msg, matches)
-  local help = [[Self-Bot Commands
+  local help = [[Self-Bot  Arman Commands
 
 ●#bot on
 فعال کردن بوت در یک گروه خواص
@@ -100,8 +100,8 @@ end
 
 return {
   patterns = {
-    "^/#(help)$",
-    "^/#(helpme)$"
+    "^#(help)$",
+    "^#(helpme)$"
   },
   run = run
 }
