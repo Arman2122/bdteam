@@ -184,15 +184,15 @@ end
 end
 return {
     patterns = {
-        '^/#(setname) (.*)$',
-        '^/#(link)$',
-        '^/#(newlink)$',
-        '^/#(tosuper)$',
-        '^/#(setdes) (.*)$',
-        "^/#(rmv)$",
-        "^/#(rmv) (.*)$",
-        "^/#(add)$",
-        "^/#(add) (.*)$",
+        '^#(setname) (.*)$',
+        '^#(link)$',
+        '^#(newlink)$',
+        '^#(tosuper)$',
+        '^#(setdes) (.*)$',
+        "^#(rmv)$",
+        "^#(rmv) (.*)$",
+        "^#(add)$",
+        "^#(add) (.*)$",
     },
     run = run
 }
