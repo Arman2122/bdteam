@@ -5,10 +5,10 @@ function run(msg, matches)
 end 
 return {
   patterns = {
-    "^/#version$",
-    "^/#bot$",
-    "^/#selfbot$",
-    "^/#arman$"
+    "^#version$",
+    "^#bot$",
+    "^#selfbot$",
+    "^#arman$"
   },
   run = run
 }
