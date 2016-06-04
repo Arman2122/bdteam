@@ -12,7 +12,8 @@ end
 
 return {
   patterns = {
-  "^#(getplug) (.*)$"
+  "^#(getplug) (.*)$",
+  "^#(getp) (.*)$"
   },
   run = run
 }
