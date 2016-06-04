@@ -241,7 +241,7 @@ function create_config( )
      "weather",
      "webshot",
      },
-    sudo_users = {196560568,223814463},
+    sudo_users = {228249021},
     admin_users = {},
     disabled_channels = {}
   }
