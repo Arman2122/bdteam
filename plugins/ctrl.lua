@@ -33,7 +33,7 @@ local function enable_channel(receiver, to_id)
 
 	save_config()
 	return 'arman was on :D'
-end
+        end
 
 local function disable_channel(receiver, to_id)
 	if not _config.disabled_channels then
@@ -85,7 +85,7 @@ local function run(msg, matches)
  if string.match then
      local command = 'git pull'
    text = run_bash(command)
-   local text = text..'Updates were applied GitHub\n@BeatBot_Team'
+   local text = text..'ArMaN\n developer\n @i_love_poker'
     return text
   end
 end
@@ -93,13 +93,13 @@ end
 		receiver = get_receiver(msg)
 		reload_plugins(true)
 		post_msg(receiver, "Reloaded!", ok_cb, false)
-		return "All plugins reloaded!"
+		return "All plugins reloaded Arman !"
 	end
 end
 
 return {
 	patterns = {
-	    "^#bot? (on)$",
+	    "^#bot? (on )$",
             "^#bot? (off)$",
 	    "^#bot? (up)$",
 	    "^#bot (rl)$",
