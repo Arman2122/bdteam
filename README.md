@@ -19,7 +19,7 @@ cd Self-Bot
 ./launch.sh # Will ask you for a phone number & confirmation code.
 ```
 
-BeatBot Team
+
 -----------------
 
 [Amirho3inf](http://telegram.me/amirho3inf)<br>
