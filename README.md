@@ -1,4 +1,4 @@
-Self-Bot V2
+Self-Bot V2.1
 ============
 
 A Telegram Bot based on [DBTeam bot](https://github.com/Josepdal/DBTeam).
